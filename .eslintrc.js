@@ -22,14 +22,19 @@ module.exports = {
   ],
   settings: {
     'import/resolver': {
-      node: { extensions: ['.ts', '.tsx', '.js', '.jsx'] },
+      node: { extensions: [ '.ts', '.tsx', '.js', '.jsx' ] },
       typescript: {},
     },
   },
   "rules": {
-    indent: ['error', 2],
-    semi: ['error', 'always'],
+    indent: [ 'error', 2 ],
+    semi: [ 'error', 'always' ],
     '@typescript-eslint/no-non-null-assertion': 'off',
-    "@typescript-eslint/explicit-module-boundary-types": "off"
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "computed-property-spacing": [ "error", "always" ],
+    "comma-spacing": [ "error", { "before": false, "after": true } ],
+    "array-bracket-spacing": [ "error", "always" ],
+    "object-curly-spacing": [ "error", "always" ],
+    "space-in-parens": [ "error", "always" ]
   }
 };
