@@ -20,6 +20,12 @@ module.exports = {
     "react",
     "@typescript-eslint"
   ],
+  settings: {
+    'import/resolver': {
+      node: { extensions: ['.ts', '.tsx', '.js', '.jsx'] },
+      typescript: {},
+    },
+  },
   "rules": {
     indent: ['error', 2],
     semi: ['error', 'always'],
