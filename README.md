@@ -15,6 +15,7 @@ npm start
 1. react-router-dom
     - use history api
     - history, location, match
+        - match : url, path, params
 ```bash
 npm i react-router-dom @types/react-router-dom
 ```

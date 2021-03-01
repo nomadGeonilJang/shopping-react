@@ -5,6 +5,7 @@ const GlobalStyles = createGlobalStyle`
     ${reset};
     body{
         font-family:'Open Sans Condensed' !important;
+        padding: 20px 60px;
     }
     
   
