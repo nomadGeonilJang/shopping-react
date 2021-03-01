@@ -8,6 +8,13 @@ const GlobalStyles = createGlobalStyle`
         padding: 20px 60px;
     }
     
+    a{
+        text-decoration: none;
+        color:black;
+    }
+    a:hover{
+        color:#ccc;
+    }
   
 `;
 
