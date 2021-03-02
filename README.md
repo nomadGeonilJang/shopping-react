@@ -30,3 +30,4 @@ to make backend way
 npm install --save firebse
 ```
 3. 프로젝트 만들기.
+4. setup 하고 google enable
