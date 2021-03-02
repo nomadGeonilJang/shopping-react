@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./sign-in.styles.scss";
 
 import FormInput from "components/form-input/form-input.component";
+import CustomButton from "components/custom-button/custom-button.component";
 const SignIn = () => {
 
   const [ formState, setFormState ] = useState( {
@@ -27,7 +28,7 @@ const SignIn = () => {
 
   return (
     <div className="sign-in">
-      <h2 className="">I already have an account</h2>
+      <h2 className="title">I already have an account</h2>
       <span>Sign in whith your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput 
@@ -46,7 +47,7 @@ const SignIn = () => {
           type="password" 
           required
         />
-        <input type="submit" value="Submit Form"/>
+        <CustomButton type="submit">Submit Form</CustomButton>
       </form>
     </div>
   );

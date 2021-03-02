@@ -18,15 +18,12 @@ const Modal = ( { children, onClose }:any ) => {
       modalRoot.innerHTML = ``;
       document.body.style.overflow = "";
     } );
-    
   };
 
   useEffect( ()=>{
     document.body.style.overflow = "hidden";
     modalRoot.classList.add( "open" );
   }, [] );
-
-
   
   return (
     <ModalContainer>
