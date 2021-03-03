@@ -10,7 +10,7 @@ type CollectionItem = {
     imageUrl:string
 }
 
-const CollectionItem = ( { id, name, price, imageUrl } :CollectionItem ) => {
+const CollectionItem = ( {  name, price, imageUrl } :CollectionItem ) => {
   const { open, modalControl } = useModal();
 
 

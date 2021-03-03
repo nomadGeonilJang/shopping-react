@@ -4,15 +4,17 @@ import { ReactComponent as Logo } from "assets/crown.svg";
 import "./header.styles.scss";
 
 import { auth } from "utils/firebase/firebase.utils";
-import { User } from "types";
+
+import CartIcon from "components/cart-icon/cart-icon.component";
+import CartDropDown from "components/cart-dropdown/cart-dropdown.component";
+import { useUser } from "utils/redux/user/user.hooks";
+import { useCart } from "utils/redux/cart/cart.hooks";
 
 
 
-type HeaderProps = {
-  currentUser:User | null
-}
-
-const Header = ( { currentUser }:HeaderProps ) => {
+const Header = (  ) => {
+  const { currentUser } = useUser();
+  const { hidden } = useCart();
   
   return (
     <header className="header">
@@ -35,7 +37,9 @@ const Header = ( { currentUser }:HeaderProps ) => {
             SIGN IN
           </Link>
         )}
+        <CartIcon/>
       </div>
+      {!hidden && <CartDropDown/>}
     </header>
   );
 

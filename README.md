@@ -31,3 +31,13 @@ npm install --save firebse
 ```
 3. 프로젝트 만들기.
 4. setup 하고 google enable
+
+### redux 추가
+1. 예측 가능한 상태 관리
+    - 단방향! flux
+    - one big state
+    - state is read only
+    - changes using pure function
+2. action -> root reducer -> store -> dom change
+3. action -> dispatcher -> store -> view
+    

@@ -1,5 +1,5 @@
-import React, { useLayoutEffect, useState }from 'react';
-import {  Route, Switch } from "react-router-dom";
+import React, { useLayoutEffect }from 'react';
+import {  Redirect, Route, Switch } from "react-router-dom";
 
 import HomePage from "pages/homepage/homepage.component";
 import ShopPage from "pages/shop/shop.component";
@@ -9,31 +9,26 @@ import Header from 'components/header/header.component';
 import { auth, createUserProfileDocument } from "utils/firebase/firebase.utils"; 
 import { User } from 'types';
 
+import { useSetUser, useUser } from 'utils/redux/user/user.hooks';
 
 function App() {
 
-  const [ appState, setAppState ] = useState<{currentUser: User | null}>( {
-    currentUser: null
-  } );
+  const setUser = useSetUser();
+  const user = useUser();
+  const isLoggedIn = user.currentUser;
 
   useLayoutEffect( () => {
+    
     const unsubscribeFromAuth  = auth.onAuthStateChanged( async ( userAuth ) => {
 
       if( userAuth ){
         const userRef = await createUserProfileDocument( userAuth, {} );
         userRef.onSnapshot( snapShop => {
-          setAppState( {
-            currentUser: {
-              id: snapShop.id,
-              ...( snapShop.data() as User )
-            }
-          } );
+          setUser( snapShop.data() as User ) ;
         } );
       }
-      
-      setAppState( {
-        currentUser: ( userAuth as User | null )
-      } );
+  
+      setUser( userAuth as unknown as User ) ;
       
     } );
     return () => {
@@ -43,11 +38,13 @@ function App() {
 
   return (
     <>
-      <Header currentUser={appState.currentUser}/>
+      <Header/>
       <Switch>
         <Route exact path="/" ><HomePage/></Route>
         <Route path="/shop"><ShopPage/></Route>
-        <Route path="/signin"><SignInAndSignUpPage/></Route>
+        <Route exact path="/signin" render={() => {
+          return isLoggedIn ? <Redirect to="/"/> : <SignInAndSignUpPage/>;
+        }}/>
       </Switch>
     </>
   );
