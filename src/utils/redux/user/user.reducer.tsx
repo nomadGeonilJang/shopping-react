@@ -2,8 +2,6 @@ import { User } from "types";
 import {  UserAction } from "utils/redux/user/user.actions";
 import { UserActionTypes } from "utils/redux/user/user.types"; 
 
-
-
 type INITIAL_STATE = {
   currentUser:User | null
 }

@@ -6,6 +6,7 @@ import "./header.styles.scss";
 
 import { auth } from "utils/firebase/firebase.utils";
 import { RootState } from "utils/redux/root-reducer";
+import CartIcon from "components/cart-icon/cart-icon.component";
 
 
 
@@ -33,6 +34,10 @@ const Header = (  ) => {
             SIGN IN
           </Link>
         )}
+        <Link className="option" to="/cart">
+          <CartIcon/>
+        </Link>
+     
       </div>
     </header>
   );
