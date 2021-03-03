@@ -1,9 +1,11 @@
 import { combineReducers } from "redux";
 import user from "utils/redux/user/user.reducer";
+import cart from "utils/redux/cart/cart.reducer";
 
 
 const rootReducer = combineReducers( {
-  user
+  user,
+  cart
 } );
 
 export default rootReducer;
