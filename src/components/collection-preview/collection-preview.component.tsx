@@ -16,7 +16,7 @@ type PreviewCollection = {
 }
 
 
-const CollectionPreview = ( { title, items }:PreviewCollection ) =>(
+const CollectionPreview = ( { title, items }:PreviewCollection ) => (
   <div className="collection-preview">
     <h1 className="title">{title.toUpperCase()}</h1>
     <div className="preview">

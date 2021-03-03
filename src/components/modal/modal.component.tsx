@@ -13,14 +13,14 @@ const Modal = ( { children, onClose }:any ) => {
 
   const handleRemoveModal = () => {    
     onClose();
-    requestAnimationFrame( ()=>{
+    requestAnimationFrame( () => {
       modalRoot.classList.remove( "open" );
       modalRoot.innerHTML = ``;
       document.body.style.overflow = "";
     } );
   };
 
-  useEffect( ()=>{
+  useEffect( () => {
     document.body.style.overflow = "hidden";
     modalRoot.classList.add( "open" );
   }, [] );
@@ -34,7 +34,7 @@ const Modal = ( { children, onClose }:any ) => {
 };
 
 
-const ModalContainer = ( { children }:any ) =>{
+const ModalContainer = ( { children }:any ) => {
   const modalRoot = document.querySelector( "#modal" );
 
   if( !modalRoot ){
@@ -48,9 +48,9 @@ export const useModal = () => {
   const [ open, setOpen ] = useState( false );
   return {
     open,
-    modalControl:{
-      close:useCallback( ()=>{setOpen( false );}, [ open ] ),
-      open:useCallback( ()=>{setOpen( true );}, [ open ] )
+    modalControl: {
+      close: useCallback( () => {setOpen( false );}, [ open ] ),
+      open: useCallback( () => {setOpen( true );}, [ open ] )
     }
   };
 };

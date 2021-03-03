@@ -26,7 +26,7 @@ const CollectionItem = ( { id, name, price, imageUrl } :CollectionItem ) => {
       <div className="collection-item" onClick={handleOpenModal}>
         <div className="image"
           style={{
-            backgroundImage:`url(${imageUrl})`
+            backgroundImage: `url(${imageUrl})`
           }}
         />
         <div className="collection-footer">
@@ -36,7 +36,7 @@ const CollectionItem = ( { id, name, price, imageUrl } :CollectionItem ) => {
       </div>
       {open && (
         <Modal onClose={handleClose}>
-          <div className="collection-footer" style={{ color:'white' }}>
+          <div className="collection-footer" style={{ color: 'white' }}>
             <span className="name">{name}</span>
             <span className="price">{price}</span>
           </div>

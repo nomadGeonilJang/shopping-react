@@ -35,6 +35,8 @@ module.exports = {
     "comma-spacing": [ "error", { "before": false, "after": true } ],
     "array-bracket-spacing": [ "error", "always" ],
     "object-curly-spacing": [ "error", "always" ],
-    "space-in-parens": [ "error", "always" ]
+    "space-in-parens": [ "error", "always" ],
+    "arrow-spacing": [ "error", { "before": true, "after": true } ],
+    "key-spacing": [ "error", { "mode": "strict" } ]
   }
 };

@@ -7,8 +7,8 @@ import { signInWithGoogle } from "utils/firebase/firebase.utils";
 const SignIn = () => {
 
   const [ formState, setFormState ] = useState( {
-    email:"",
-    password:""
+    email: "",
+    password: ""
   } );
 
 
@@ -19,9 +19,9 @@ const SignIn = () => {
   const handleChange = ( e:React.ChangeEvent<HTMLInputElement> ) => {
     const { name, value } = e.target;
 
-    setFormState( prev=>( {
+    setFormState( prev => ( {
       ...prev,
-      [ name ]:value
+      [ name ]: value
     } ) );
 
   };

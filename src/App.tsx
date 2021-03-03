@@ -11,11 +11,11 @@ import { auth } from "utils/firebase/firebase.utils";
 function App() {
 
   const [ appState, setAppState ] = useState<{currentUser:any}>( {
-    currentUser:null
+    currentUser: null
   } );
 
-  useLayoutEffect( ()=>{
-    const unsubscribeFromAuth  = auth.onAuthStateChanged( ( currentUser )=>{
+  useLayoutEffect( () => {
+    const unsubscribeFromAuth  = auth.onAuthStateChanged( ( currentUser ) => {
       setAppState( { currentUser } );
     } );
     return () => {
