@@ -6,22 +6,42 @@ import ShopPage from "pages/shop/shop.component";
 import SignInAndSignUpPage from "pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
 import Header from 'components/header/header.component';
 
-import { auth } from "utils/firebase/firebase.utils"; 
+import { auth, createUserProfileDocument } from "utils/firebase/firebase.utils"; 
+import { User } from 'types';
+
 
 function App() {
 
-  const [ appState, setAppState ] = useState<{currentUser:any}>( {
+  const [ appState, setAppState ] = useState<{currentUser: User | null}>( {
     currentUser: null
   } );
 
   useLayoutEffect( () => {
-    const unsubscribeFromAuth  = auth.onAuthStateChanged( ( currentUser ) => {
-      setAppState( { currentUser } );
+    const unsubscribeFromAuth  = auth.onAuthStateChanged( async ( userAuth ) => {
+
+      if( userAuth ){
+        const userRef = await createUserProfileDocument( userAuth, {} );
+        userRef.onSnapshot( snapShop => {
+          setAppState( {
+            currentUser: {
+              id: snapShop.id,
+              ...( snapShop.data() as User )
+            }
+          } );
+        } );
+      }
+      
+      setAppState( {
+        currentUser: ( userAuth as User | null )
+      } );
+      
     } );
     return () => {
       unsubscribeFromAuth();
     };
   }, [] );
+
+  console.log( appState );
 
 
   return (

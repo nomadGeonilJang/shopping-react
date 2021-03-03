@@ -37,6 +37,7 @@ module.exports = {
     "object-curly-spacing": [ "error", "always" ],
     "space-in-parens": [ "error", "always" ],
     "arrow-spacing": [ "error", { "before": true, "after": true } ],
-    "key-spacing": [ "error", { "mode": "strict" } ]
+    "key-spacing": [ "error", { "mode": "strict" } ],
+    "space-before-function-paren": ["error", {"anonymous": "always", "named": "never", "asyncArrow": "always"}]
   }
 };

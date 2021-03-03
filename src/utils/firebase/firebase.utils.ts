@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
+import moment from "moment";
 
 const config = {
   apiKey: "AIzaSyB_QaLhVY7j-8j3VSb1LjlXw1yHMXMIGHo",
@@ -16,6 +17,33 @@ firebase.initializeApp( config );
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
+
+export const createUserProfileDocument = async ( userAuth: firebase.User | null, additionalData:any ) => {
+  if( !userAuth ) {
+    throw new Error( "user auth not found" );
+  }
+
+  const userRef = firestore.doc( `/users/${userAuth.uid}` );
+  const snapShot = await userRef.get();
+
+  if( !snapShot.exists ){
+    const { displayName, email } = userAuth;
+    const createdAt = moment().format( "YYYY-MM-DD" );
+    try {
+      await userRef.set( {
+        displayName, email, createdAt, ...additionalData
+      } );
+    } catch ( error ) {
+      console.log( 'error creating user', error.message );
+    }
+  }
+  
+  return userRef;
+};
+
+
+
+
 
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters( {
