@@ -1,5 +1,6 @@
 import { User } from "types";
-import {  SET_CURRENT_USER, UserAction } from "utils/redux/user/user.actions";
+import {  UserAction } from "utils/redux/user/user.actions";
+import { UserActionTypes } from "utils/redux/user/user.types"; 
 
 
 
@@ -13,7 +14,7 @@ const initialUserState:INITIAL_STATE = {
 
 const userReducer = ( state = initialUserState, action:UserAction ) => {
   switch( action.type ){
-  case SET_CURRENT_USER:
+  case UserActionTypes.SET_CURRENT_USER:
     return {
       ...state,
       currentUser: action.payload
