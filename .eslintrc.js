@@ -38,6 +38,8 @@ module.exports = {
     "space-in-parens": [ "error", "always" ],
     "arrow-spacing": [ "error", { "before": true, "after": true } ],
     "key-spacing": [ "error", { "mode": "strict" } ],
-    "space-before-function-paren": ["error", {"anonymous": "always", "named": "never", "asyncArrow": "always"}]
+    "space-before-function-paren": [ "error", { "anonymous": "always", "named": "never", "asyncArrow": "always" } ],
+    "eqeqeq": [ "error", "always" ],
+    "space-infix-ops": "error"
   }
 };
