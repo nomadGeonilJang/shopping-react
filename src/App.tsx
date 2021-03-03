@@ -41,9 +41,6 @@ function App() {
     };
   }, [] );
 
-  console.log( appState );
-
-
   return (
     <>
       <Header currentUser={appState.currentUser}/>
