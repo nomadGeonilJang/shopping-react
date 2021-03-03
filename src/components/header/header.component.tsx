@@ -1,18 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { ReactComponent as Logo } from "assets/crown.svg";
 import "./header.styles.scss";
 
 import { auth } from "utils/firebase/firebase.utils";
-import { User } from "types";
+import { RootState } from "utils/redux/root-reducer";
 
 
 
-type HeaderProps = {
-  currentUser:User | null
-}
-
-const Header = ( { currentUser }:HeaderProps ) => {
+const Header = (  ) => {
+  const { currentUser } = useSelector( ( state:RootState ) => state.user ); 
   
   return (
     <header className="header">
