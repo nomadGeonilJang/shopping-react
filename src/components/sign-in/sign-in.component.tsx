@@ -3,24 +3,36 @@ import "./sign-in.styles.scss";
 
 import FormInput from "components/form-input/form-input.component";
 import CustomButton from "components/custom-button/custom-button.component";
+import { auth, signInWithGoogle } from "utils/firebase/firebase.utils";
+
+const initState = {
+  email: "",
+  password: ""
+};
+
 const SignIn = () => {
 
-  const [ formState, setFormState ] = useState( {
-    email:"",
-    password:""
-  } );
+  const [ { email, password }, setFormState ] = useState( initState );
 
 
-  const handleSubmit = ( event:React.FormEvent ) => {
+  const handleSubmit = async ( event:React.FormEvent ) => {
     event.preventDefault();
+
+    try{
+      await auth.signInWithEmailAndPassword( email, password );
+      setFormState( initState );
+    }catch( error ){
+      console.log( error );
+    }
+    
   };
 
   const handleChange = ( e:React.ChangeEvent<HTMLInputElement> ) => {
     const { name, value } = e.target;
 
-    setFormState( prev=>( {
+    setFormState( prev => ( {
       ...prev,
-      [ name ]:value
+      [ name ]: value
     } ) );
 
   };
@@ -32,22 +44,25 @@ const SignIn = () => {
       <span>Sign in whith your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput 
-          label="email"
-          value={formState.email}
+          label="Email"
+          value={email}
           onChange={handleChange}
           name="email" 
           type="email"
           required
         />
         <FormInput  
-          label="password"
-          value={formState.password}
+          label="Password"
+          value={password}
           onChange={handleChange}
           name="password"
           type="password" 
           required
         />
-        <CustomButton type="submit">Submit Form</CustomButton>
+        <div className="buttons">
+          <CustomButton type="submit">Sign in</CustomButton>
+          <CustomButton type="button" onClick={signInWithGoogle} isGoogleSignIn>Sign in with Google</CustomButton>
+        </div>
       </form>
     </div>
   );

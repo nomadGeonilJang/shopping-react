@@ -3,6 +3,9 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
     ${reset};
+    *{
+        box-sizing:border-box;
+    }
     body{
         padding: 20px 60px;
     }

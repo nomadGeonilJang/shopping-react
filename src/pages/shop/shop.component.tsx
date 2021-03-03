@@ -4,7 +4,7 @@ import SHOP_DATA from "constants/shop.data";
 import CollectionPreview from "components/collection-preview/collection-preview.component";
 
 
-const Shop = () =>{
+const Shop = () => {
   const [ collection ] = useState( SHOP_DATA );
 
 

@@ -6,7 +6,7 @@ import data from "constants/directory.data";
 import MenuItem from "components/menu-item/menu-item.component";
 
 
-const Directory = () =>{
+const Directory = () => {
   const [ sections ] = useState( data );
 
 
