@@ -1,6 +1,6 @@
 import { CartAction } from "utils/redux/cart/cart.actions";
 import { CartActionTypes } from "utils/redux/cart/cart.types";
-import { addItemToCart, clearItemFromCart } from "utils/redux/cart/cart.utils";
+import { addItemToCart, removeToCart, clearItemFromCart } from "utils/redux/cart/cart.utils";
 
 export type CartItem = {
   id:number|string;
@@ -32,6 +32,11 @@ const cartReducer = ( state = initialCartState, action:CartAction ) => {
     return {
       ...state,
       cartItems: addItemToCart( state.cartItems, action.payload )
+    };
+  case CartActionTypes.REMOVE_ITEM:
+    return {
+      ...state,
+      cartItems: removeToCart( state.cartItems, action.payload )
     };
 
   case CartActionTypes.CLEAR_ITEM_FROM_CART:
