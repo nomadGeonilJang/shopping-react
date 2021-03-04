@@ -1,11 +1,13 @@
 import { CartAction } from "utils/redux/cart/cart.actions";
 import { CartActionTypes } from "utils/redux/cart/cart.types";
+import { addItemToCart } from "utils/redux/cart/cart.utils";
 
 export type CartItem = {
   id:number|string;
   name:string;
   price:string | number;
-  imageUrl:string
+  imageUrl:string;
+  quantity?:number;
 }
 type INITIAL_STATE = {
   hidden:boolean
@@ -27,9 +29,10 @@ const cartReducer = ( state = initialCartState, action:CartAction ) => {
     };
 
   case CartActionTypes.ADD_ITEM:
+    
     return {
       ...state,
-      cartItems: [ ...state.cartItems, action.payload ]
+      cartItems: addItemToCart( state.cartItems, action.payload )
     };
 
   default:
