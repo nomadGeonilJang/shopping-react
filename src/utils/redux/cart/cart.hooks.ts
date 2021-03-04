@@ -16,3 +16,7 @@ export const useCartItemsCount = () => {
   const { cartItems } = useCart();
   return cartItems.reduce( ( a, c ) => a + c.quantity!, 0 );
 };
+export const useTotalPrice = () => {
+  const { cartItems } = useCart();
+  return cartItems.reduce( ( a, c ) => a + c.quantity! *  Number( c.price ), 0 );
+};
