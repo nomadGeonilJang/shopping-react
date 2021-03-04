@@ -9,7 +9,10 @@ export const addItemToCart = ( cartItems:CartItem[], cartItemToAdd:CartItem ) =>
         ? { ...cartItem, quantity: ( cartItem.quantity! +  1 ) } 
         : cartItem );
   }
-  
 
   return [ ...cartItems, { ...cartItemToAdd, quantity: 1 } ];
+};
+
+export const clearItemFromCart = ( cartItems:CartItem[], itemId:number|string ) => { 
+  return cartItems.filter( cartItem => cartItem.id !== itemId );
 };

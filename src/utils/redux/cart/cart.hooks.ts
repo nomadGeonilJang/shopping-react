@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { addItem, toggleCart } from "utils/redux/cart/cart.actions";
+import { addItem, clearItemFromCart, toggleCart } from "utils/redux/cart/cart.actions";
 import { CartItem } from "utils/redux/cart/cart.reducer";
 import { RootState } from "utils/redux/root-reducer";
 
@@ -19,4 +19,8 @@ export const useCartItemsCount = () => {
 export const useTotalPrice = () => {
   const { cartItems } = useCart();
   return cartItems.reduce( ( a, c ) => a + c.quantity! *  Number( c.price ), 0 );
+};
+export const useClearItemFromCart = () => {
+  const  dispatch = useDispatch();
+  return ( id:number|string ) => dispatch( clearItemFromCart( id ) );
 };
