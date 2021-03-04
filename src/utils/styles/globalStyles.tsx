@@ -5,9 +5,11 @@ const GlobalStyles = createGlobalStyle`
     ${reset};
     *{
         box-sizing:border-box;
+       
     }
     body{
         padding: 20px 60px;
+        font-size:12px;
     }
     
     a{

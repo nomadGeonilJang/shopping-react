@@ -1,47 +1,34 @@
 import React from "react";
 import "./collection-item.styles.scss";
 
-import Modal, { useModal } from "components/modal/modal.component";
+
+import CustomButton from "components/custom-button/custom-button.component";
+import { useAddItem } from "utils/redux/cart/cart.hooks";
+import { CartItem } from "utils/redux/cart/cart.reducer";
 
 type CollectionItem = {
-    id:number|string;
-    name:string;
-    price:string | number;
-    imageUrl:string
+  item: CartItem
 }
 
-const CollectionItem = ( {  name, price, imageUrl } :CollectionItem ) => {
-  const { open, modalControl } = useModal();
-
-
-  const handleOpenModal = () => {
-    modalControl.open();
-  };
-  const handleClose = () => {
-    modalControl.close();
-  };
+const CollectionItem = ( { item } :CollectionItem ) => {
+  const { id,  name, price, imageUrl } = item ;
+  const addItem = useAddItem();
 
   return (
     <>
-      <div className="collection-item" onClick={handleOpenModal}>
+      <div className="collection-item" >
         <div className="image"
           style={{
             backgroundImage: `url(${imageUrl})`
           }}
         />
         <div className="collection-footer">
-          <span className="name">{name}</span>
+          <span className="name">{id}{name}</span>
           <span className="price">{price}</span>
         </div>
+        <CustomButton inverted onClick={() => {addItem( item );}}>Add to cart</CustomButton>
       </div>
-      {open && (
-        <Modal onClose={handleClose}>
-          <div className="collection-footer" style={{ color: 'white' }}>
-            <span className="name">{name}</span>
-            <span className="price">{price}</span>
-          </div>
-        </Modal>
-      )}
+    
     </>
   );
 };
