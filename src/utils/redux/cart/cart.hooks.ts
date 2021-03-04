@@ -12,3 +12,7 @@ export const useAddItem = () => {
   const dispatch = useDispatch();
   return ( item:CartItem ) => dispatch( addItem( item ) ); 
 };
+export const useCartItemsCount = () => {
+  const { cartItems } = useCart();
+  return cartItems.reduce( ( a, c ) => a + c.quantity!, 0 );
+};

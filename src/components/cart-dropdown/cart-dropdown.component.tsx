@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import "./cart-dropdown.styles.scss";
 
 import CustomButton from "components/custom-button/custom-button.component";
@@ -18,4 +18,4 @@ const CartDropDown = () => {
   );
 };
 
-export default CartDropDown;
+export default memo( CartDropDown );
