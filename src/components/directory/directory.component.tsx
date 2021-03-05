@@ -1,15 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import "./directory.styles.scss";
 
-
-import data from "constants/directory.data";
 import MenuItem from "components/menu-item/menu-item.component";
+import { useDirectory } from "utils/redux/directory/directory.hooks";
 
 
-const Directory = () => {
-  const [ sections ] = useState( data );
-
-
+const Directory = () => {  
+  const { sections } = useDirectory();
   return (
     <div className="directory-menu">
       { 
