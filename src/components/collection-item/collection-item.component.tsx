@@ -23,8 +23,8 @@ const CollectionItem = ( { item } :CollectionItem ) => {
           }}
         />
         <div className="collection-footer">
-          <span className="name">{id}{name}</span>
-          <span className="price">{price}</span>
+          <span className="name">{name}</span>
+          <span className="price">${price}</span>
         </div>
         <CustomButton inverted onClick={() => {addItem( item );}}>Add to cart</CustomButton>
       </div>
