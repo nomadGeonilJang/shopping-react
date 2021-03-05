@@ -41,3 +41,7 @@ npm install --save firebse
 2. action -> root reducer -> store -> dom change
 3. action -> dispatcher -> store -> view
     
+## The Job of a react develop
+1. decide on components
+2. decide ths state and where it lives
+3. what changes when state changes
