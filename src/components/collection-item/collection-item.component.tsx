@@ -11,7 +11,7 @@ type CollectionItem = {
 }
 
 const CollectionItem = ( { item } :CollectionItem ) => {
-  const { id,  name, price, imageUrl } = item ;
+  const { name, price, imageUrl } = item ;
   const addItem = useAddItem();
 
   return (

@@ -10,8 +10,16 @@ type Collection = {
   items:CartItem[]
 }
 
+
+
 type INITIAL_STATE = {
-  collections:Collection[]
+  collections:{
+    hats:Collection
+    sneakers:Collection
+    jackets:Collection
+    womens:Collection
+    mens:Collection
+  }
 }
 const initialShopState:INITIAL_STATE = {
   collections: SHOP_DATA
