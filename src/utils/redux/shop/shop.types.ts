@@ -1,5 +1,5 @@
-export const ShopActionTypes = {
-  
-};
 
-type ShopAction = ""
+export const ShopActionTypes = {
+  UPDATE_COLLECTIONS: 'UPDATE_COLLECTIONS'
+} as const;
+

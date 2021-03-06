@@ -8,7 +8,7 @@ const CollectionsOverview = () => {
   const  collections  = useCollections();
   return (
     <div className="collections-overview">
-      {collections.map( ( { id, ...collection } ) => (
+      {collections?.map( ( { id, ...collection } ) => (
         <CollectionPreview key={id} {...collection}/>
       ) )}
     </div>
