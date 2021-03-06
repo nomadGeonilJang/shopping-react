@@ -6,9 +6,7 @@ import CartIcon from "components/cart-icon/cart-icon.component";
 import CartDropDown from "components/cart-dropdown/cart-dropdown.component";
 import { useUser } from "utils/redux/user/user.hooks";
 import { useCart } from "utils/redux/cart/cart.hooks";
-import { HeaderContainer, LogoContainer, OptionA, OptionLink, OptionsContainer } from "components/header/header.styles";
-
-
+import { HeaderContainer, LogoContainer, OptionLink, OptionsContainer } from "components/header/header.styles";
 
 const Header = (  ) => {
   const { currentUser } = useUser();
@@ -20,16 +18,16 @@ const Header = (  ) => {
         <Logo className="logo"/>
       </LogoContainer>
       <OptionsContainer >
-        <OptionLink  to="/shop">
+        <OptionLink to="/shop">
               SHOP
         </OptionLink>
         <OptionLink  to="/shop">
               CONTACT
         </OptionLink>
         { currentUser ? ( 
-          <OptionA 
+          <OptionLink as="a"
             onClick={() => auth.signOut()}
-          >SIGN OUT</OptionA> 
+          >SIGN OUT</OptionLink> 
         ) : (
           <OptionLink  to="/signin">
             SIGN IN
