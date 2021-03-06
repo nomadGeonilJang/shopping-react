@@ -36,7 +36,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "heroku":"git push heroku main:master"
   },
   "eslintConfig": {
     "extends": [
@@ -66,5 +67,5 @@
     "eslint-plugin-react": "^7.22.0",
     "redux-devtools-extension": "^2.13.8"
   },
-  "homepage": "http://nomadGeonilJang.github.io/shopping-react"
+  "homepage": "https://gi-shop.herokuapp.com/"
 }

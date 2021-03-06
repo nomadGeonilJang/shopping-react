@@ -45,3 +45,18 @@ npm install --save firebse
 1. decide on components
 2. decide ths state and where it lives
 3. what changes when state changes
+
+## deploy with heroku
+```bash
+#https://devcenter.heroku.com/articles/heroku-cli
+brew tap heroku/brew && brew install heroku
+npm install -g heroku
+heroku --version
+heroku login
+heroku login -i
+cd ~/myapp
+heroku create app-name --buildpack mars/create-react-app
+git push heroku <branch>:master
+```
+
+## css in jsgit 
