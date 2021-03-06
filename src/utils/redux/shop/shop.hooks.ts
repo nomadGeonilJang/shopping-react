@@ -1,12 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "utils/redux/root-reducer";
-import { updateCollections } from "utils/redux/shop/shop.actions";
+import { fetchCollectionsStart } from "utils/redux/shop/shop.actions";
 import { CollectionsMap } from "utils/redux/shop/shop.reducer";
 
 export type CollectionID =  "hats" | "sneakers" | "jackets" | "womens" | "mens"
 
 export const useShop = () => {
   return useSelector( ( state:RootState ) => state.shop );
+};
+export const useisFetching = () => {
+  const { isFetching } = useSelector( ( state:RootState ) => state.shop );
+  return isFetching;
 };
 export const useCollections = () => {
   const { collections } = useSelector( ( state:RootState ) => state.shop );
@@ -20,7 +24,7 @@ export const useSelectCollectionWithCollectionId = ( collectionId:CollectionID )
   const { collections } = useSelector( ( state:RootState ) => state.shop );
   return collections ? collections[ collectionId ] : collections ;
 };
-export const useUpdateCollection = () => {
+export const useFetchCollectionStartAsync = ( asyncFunction:any ) => {
   const dispatch = useDispatch();
-  return ( collectionsMap : CollectionsMap ) => dispatch( updateCollections( collectionsMap ) );
+  return ( ) => dispatch( asyncFunction() );
 };

@@ -23,18 +23,37 @@ type INITIAL_STATE = {
     womens:Collection
     mens:Collection
   } | null
+  isFetching:boolean
+  errorMessage?:string
 }
 const initialShopState:INITIAL_STATE = {
-  collections: null
+  collections: null,
+  isFetching: false,
+  errorMessage: undefined
 };
 
-const shopReducer = ( state = initialShopState, action:ShopAction ) => {
+const shopReducer = ( state:INITIAL_STATE = initialShopState, action:ShopAction ) => {
 
   switch( action.type ){
-  case ShopActionTypes.UPDATE_COLLECTIONS:
+  case ShopActionTypes.FETCH_COLLECTIONS_REQUEST:
+    return {
+      ...state,
+      isFetching: true,
+      errorMessage: undefined
+    };
+  
+  case ShopActionTypes.FETCH_COLLECTIONS_SUCCESS:
     return{
       ...state,
+      isFetching: false,
       collections: action.payload
+    };
+
+  case ShopActionTypes.FETCH_COLLECTIONS_FAILURE:
+    return{
+      ...state,
+      isFetching: false,
+      errorMessage: action.payload
     };
 
   default:
