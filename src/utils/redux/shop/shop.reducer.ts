@@ -1,15 +1,19 @@
 
 import { CartItem } from "utils/redux/cart/cart.reducer";
+import { CollectionID } from "utils/redux/shop/shop.hooks";
+import { ShopActionTypes } from "utils/redux/shop/shop.types";
 import { ShopAction } from "./shop.actions";
-import SHOP_DATA from "./shop.data";
 
-type Collection = {
+export type Collection = {
   id:number;
   title:string;
   routeName: string;
   items:CartItem[]
 }
 
+export type CollectionsMap = {
+  [key in CollectionID]: Collection;
+}; 
 
 type INITIAL_STATE = {
   collections:{
@@ -18,14 +22,27 @@ type INITIAL_STATE = {
     jackets:Collection
     womens:Collection
     mens:Collection
-  }
+  } | null
 }
 const initialShopState:INITIAL_STATE = {
-  collections: SHOP_DATA
+  collections: null
 };
 
 const shopReducer = ( state = initialShopState, action:ShopAction ) => {
-  return state;
+
+  switch( action.type ){
+  case ShopActionTypes.UPDATE_COLLECTIONS:
+    return{
+      ...state,
+      collections: action.payload
+    };
+
+  default:
+    return state;
+  }
+
+
+  
 };
 
 export default shopReducer;

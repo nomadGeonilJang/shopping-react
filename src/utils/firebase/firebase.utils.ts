@@ -2,6 +2,9 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 import moment from "moment";
+import { CartItem } from "utils/redux/cart/cart.reducer";
+import { CollectionsMap } from "utils/redux/shop/shop.reducer";
+
 
 const config = {
   apiKey: "AIzaSyB_QaLhVY7j-8j3VSb1LjlXw1yHMXMIGHo",
@@ -24,6 +27,32 @@ export const addCollectionAndDocuments = async ( collectionKey:string, objectsTo
   } );
   return batch.commit();
 
+};
+
+type Collection = {
+  title:string;
+  items:CartItem[]
+}
+type Doc = {
+  id:string|number
+  data:()=>Collection
+}
+export type ConvertCollectionsSnapshotToMap = {
+  docs:Doc[]
+}
+export const convertCollectionsSnapshotToMap = ( collections:ConvertCollectionsSnapshotToMap ): CollectionsMap => {
+  return  collections.docs.map( doc => {
+    const { title, items } = doc.data();
+    return {
+      routeName: encodeURI( title.toLocaleLowerCase() ),
+      id: doc.id,
+      title,
+      items
+    };
+  } ).reduce( ( acc:any, collection ) => {
+    acc[  collection.title.toLocaleLowerCase()  ] = collection;
+    return acc;
+  }, {} );
 };
 
 export const auth = firebase.auth();
