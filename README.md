@@ -73,3 +73,5 @@ git push heroku <branch>:master
 1. 추가적인 기능을 부착 시킬 수 있다! 
 
 ## observables, observers
+1. Observable - stream
+o -> o -> o -> o -> 
