@@ -69,3 +69,7 @@ git push heroku <branch>:master
 ```
 
 ## css in jsgit 
+## HOC
+1. 추가적인 기능을 부착 시킬 수 있다! 
+
+## observables, observers
