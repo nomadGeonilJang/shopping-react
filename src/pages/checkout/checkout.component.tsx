@@ -1,4 +1,5 @@
 import CheckoutItem from "components/checkout-item/checkout-item.component";
+import StripeCheckoutButton from "components/stripe-button/stripe-button.component";
 import React from "react";
 import { useCart, useTotalPrice } from "utils/redux/cart/cart.hooks";
 import "./checkout.styles.scss";
@@ -30,9 +31,14 @@ const Checkout = () => {
         cartItems.map( cartItem => <CheckoutItem key={cartItem.id} item={cartItem}/> )
       }
       
-      <div className="total">
-        <span>TOTAL: ${totalPrice}</span>
+      <span className="total"> TOTAL: ${totalPrice}</span>
+      <div className="test-warning">
+        *Please use the following test creadit card for payments*
+        <br/>
+        4242 4242 4242 4242 - Exp :01/20 - CVV: 123
       </div>
+      <StripeCheckoutButton price={totalPrice}/>
+      
     </div>
   );
 };
