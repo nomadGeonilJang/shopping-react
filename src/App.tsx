@@ -12,14 +12,16 @@ import { auth, createUserProfileDocument } from "utils/firebase/firebase.utils";
 import { User } from 'types';
 import { useSetUser, useUser } from 'utils/redux/user/user.hooks';
 
+
 function App() {
 
+  
   const setUser = useSetUser();
   const user = useUser();
   const isLoggedIn = user.currentUser;
 
   useLayoutEffect( () => {
-    
+  
     const unsubscribeFromAuth  = auth.onAuthStateChanged( async ( userAuth ) => {
 
       if( userAuth ){
@@ -28,14 +30,14 @@ function App() {
           setUser( snapShop.data() as User ) ;
         } );
       }
-  
       setUser( userAuth as unknown as User ) ;
-      
     } );
     return () => {
       unsubscribeFromAuth();
     };
   }, [] );
+
+  
 
   return (
     <>

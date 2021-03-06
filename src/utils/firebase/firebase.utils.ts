@@ -15,6 +15,17 @@ const config = {
 
 firebase.initializeApp( config );
 
+export const addCollectionAndDocuments = async ( collectionKey:string, objectsToAdd:any ) => {
+  const collectionRef = firestore.collection( collectionKey ); 
+  const batch = firestore.batch();
+  objectsToAdd.forEach( ( obj:any ) => {
+    const newDocRef = collectionRef.doc();
+    batch.set( newDocRef, obj );
+  } );
+  return batch.commit();
+
+};
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
@@ -47,5 +58,7 @@ provider.setCustomParameters( {
 } );
 
 export const signInWithGoogle = () => auth.signInWithPopup( provider );
+
+
 
 export default firebase;

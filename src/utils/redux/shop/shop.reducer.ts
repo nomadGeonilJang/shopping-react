@@ -11,7 +11,6 @@ type Collection = {
 }
 
 
-
 type INITIAL_STATE = {
   collections:{
     hats:Collection

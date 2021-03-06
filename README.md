@@ -25,12 +25,21 @@ npm i react-router-dom @types/react-router-dom
 to make backend way
 ![hello](https://i.ibb.co/8PGZcB2/2021-03-03-12-47-19.png)
 
+
 2. 설치하기
 ```bash
 npm install --save firebse
 ```
 3. 프로젝트 만들기.
 4. setup 하고 google enable
+
+#### QueryReference
+1. firestore.doc("/users/:userId");
+    - set, get, update, delete
+    - documentSnapshot -> 단일 로우
+2. firestore.collection("/users");
+    - add, get
+    - querySnapshot -> 부모! 테이블
 
 ### redux 추가
 1. 예측 가능한 상태 관리
