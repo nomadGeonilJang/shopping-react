@@ -5,11 +5,11 @@ const GlobalStyles = createGlobalStyle`
     ${reset};
     *{
         box-sizing:border-box;
-       
     }
     body{
         padding: 20px 60px;
         font-size:12px;
+        font-family: 'Noto Sans KR', sans-serif;
     }
     
     a{
