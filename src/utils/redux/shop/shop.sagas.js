@@ -4,7 +4,6 @@ import { fetchCollectionsFailure, fetchCollectionsSuccess } from 'utils/redux/sh
 
 import { ShopActionTypes } from "./shop.types";
 
-
 export function* fetchCollectionsAsync(){
   try {
     const collectionRef = firestore.collection( "collections" );

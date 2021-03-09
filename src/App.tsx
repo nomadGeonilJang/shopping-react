@@ -1,4 +1,4 @@
-import React, { useLayoutEffect }from 'react';
+import React from 'react';
 import {  Redirect, Route, Switch } from "react-router-dom";
 
 import HomePage from "pages/homepage/homepage.component";
@@ -8,35 +8,15 @@ import CheckoutPage from "pages/checkout/checkout.component";
 
 import Header from 'components/header/header.component';
 
-import { auth, createUserProfileDocument } from "utils/firebase/firebase.utils"; 
-import { User } from 'types';
-import { useSetUser, useUser } from 'utils/redux/user/user.hooks';
+
+import { useUser } from 'utils/redux/user/user.hooks';
 
 
 function App() {
 
-  const setUser = useSetUser();
   const user = useUser();
   const isLoggedIn = user.currentUser;
 
-  useLayoutEffect( () => {
-  
-    const unsubscribeFromAuth  = auth.onAuthStateChanged( async ( userAuth ) => {
-
-      if( userAuth ){
-        const userRef = await createUserProfileDocument( userAuth, {} );
-        userRef.onSnapshot( snapShop => {
-          setUser( snapShop.data() as User ) ;
-        } );
-      }
-      setUser( userAuth as unknown as User ) ;
-    } );
-    return () => {
-      unsubscribeFromAuth();
-    };
-  }, [] );
-
-  
   return (
     <>
       <Header/>
