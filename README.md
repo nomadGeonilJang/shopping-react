@@ -25,7 +25,6 @@ npm i react-router-dom @types/react-router-dom
 to make backend way
 ![hello](https://i.ibb.co/8PGZcB2/2021-03-03-12-47-19.png)
 
-
 2. 설치하기
 ```bash
 npm install --save firebse
@@ -75,3 +74,21 @@ git push heroku <branch>:master
 ## observables, observers
 1. Observable - stream
 o -> o -> o -> o -> 
+
+## redux - saga
+1. condition run function!! nice 
+2. generator function
+    - Async Await is actually built on top of generators
+    ```js
+    function* gen(i){
+        yield i;
+        yield i + 10;
+    }
+    const g= gen(5);
+    g.next(); // {value: undefined, done: true}
+    
+    while(!g.done){
+        g.next()
+    }
+
+    ```

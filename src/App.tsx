@@ -15,7 +15,6 @@ import { useSetUser, useUser } from 'utils/redux/user/user.hooks';
 
 function App() {
 
-  
   const setUser = useSetUser();
   const user = useUser();
   const isLoggedIn = user.currentUser;
@@ -38,7 +37,6 @@ function App() {
   }, [] );
 
   
-
   return (
     <>
       <Header/>
