@@ -13,13 +13,12 @@ import { useUser } from 'utils/redux/user/user.hooks';
 
 
 function App() {
-
   const user = useUser();
   const isLoggedIn = user.currentUser;
 
   return (
     <>
-      <Header/>
+      <Header/>``
       <Switch>
         <Route exact path="/" ><HomePage/></Route>
         <Route path="/shop"><ShopPage/></Route>
