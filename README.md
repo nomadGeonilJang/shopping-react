@@ -92,3 +92,7 @@ o -> o -> o -> o ->
     }
 
     ```
+3. take, takeEvery, takeLaste
+    - take <- it's not gonna start again when it's done 
+    - takeEvery <- it's again forevery as new take = regenerator ( take + while(true) ) 
+    - takeLatest <- it kills(cancel!! nice!) previous tast and start current task ( setTimeout, only lastest on do!!) 

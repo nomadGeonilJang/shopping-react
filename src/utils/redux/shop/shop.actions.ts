@@ -16,18 +16,6 @@ export const fetchCollectionsFailure = ( errorMessage:string ) => ( {
   payload: errorMessage
 } );
 
-// export const fetchCollectionsStartAsync = () => {
-//   return ( dispatch:Dispatch ) => {
-//     dispatch( fetchCollectionsStart() );
-//     const collectionRef = firestore.collection( "collections" );
-//     collectionRef.get()
-//       .then( async ( snapshot ) => {
-//         const collectionsMap = convertCollectionsSnapshotToMap( snapshot as unknown as ConvertCollectionsSnapshotToMap );
-//         dispatch( fetchCollectionsSuccess( collectionsMap ) );
-//       } )
-//       .catch( error => dispatch( fetchCollectionsFailure( error.message ) ) );
-//   };
-// };
 
 export type ShopAction = 
 | ReturnType<typeof fetchCollectionsStart> 
