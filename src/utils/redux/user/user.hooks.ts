@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { User } from "types";
 import { RootState } from "utils/redux/root-reducer";
-import { checkUserSession, emailSignInRequest, googleSignInRequest, setCurrentUser, signOutStart } from "utils/redux/user/user.actions";
+import { checkUserSession, emailSignInRequest, googleSignInRequest, setCurrentUser, signOutStart, signUpStart } from "utils/redux/user/user.actions";
 
 export const useUser = () => useSelector( ( state:RootState ) => state.user );
 
@@ -28,4 +28,9 @@ export const useCheckUserSession = () => {
 export const useSignOut = () => {
   const dispatch = useDispatch();
   return () => dispatch( signOutStart() );
+};
+
+export const useSignUp = () => {
+  const dispatch = useDispatch();
+  return ( userCredentials:any ) => dispatch( signUpStart( userCredentials ) );
 };
