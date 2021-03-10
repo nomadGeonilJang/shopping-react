@@ -1,10 +1,9 @@
 import React, { useRef, useState } from "react";
 import "./sign-up.styles.scss";
 
-import { auth, createUserProfileDocument } from "utils/firebase/firebase.utils";
-
 import FormInput from "components/form-input/form-input.component";
 import CustomButton from "components/custom-button/custom-button.component";
+import { useSignUp } from "utils/redux/user/user.hooks";
 
 const initState = {
   displayName: "",
@@ -14,7 +13,7 @@ const initState = {
 };
 
 const SingUp = () => {
-
+  const signUp = useSignUp();
   const formRef = useRef<HTMLFormElement>( null );
   const [ { displayName, email, password, confirmPassword }, setFormState ] = useState( initState );
 
@@ -33,13 +32,7 @@ const SingUp = () => {
       return;
     }
 
-    try {
-      const { user } = await auth.createUserWithEmailAndPassword( email, password );
-      await createUserProfileDocument( user, { displayName } );
-      setFormState( initState );
-    } catch ( error ) {
-      console.log( error );
-    }
+    signUp( { displayName, email, password } );
   };
 
   return (

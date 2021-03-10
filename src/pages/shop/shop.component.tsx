@@ -3,8 +3,7 @@ import { Route, useRouteMatch } from "react-router-dom";
 import CollectionsOverview from "components/collections-overview/collections-overview.component";
 import CollectionPage from "pages/collection/collection.component";
 import WithSpinner from "components/with-spinner/with-spinner.component";
-import { fetchCollectionsStartAsync } from "utils/redux/shop/shop.actions";
-import { useFetchCollectionStartAsync, useisFetching } from "utils/redux/shop/shop.hooks";
+import { useFetchCollectionStart, useisFetching } from "utils/redux/shop/shop.hooks";
 
 
 
@@ -14,10 +13,10 @@ const CollectionsPageWithSpinner = WithSpinner( CollectionPage );
 const Shop = () => {
   const match = useRouteMatch();
   const isFetching = useisFetching();
-  const fetchStart = useFetchCollectionStartAsync( fetchCollectionsStartAsync );
+  const fetchCollectionsStart = useFetchCollectionStart( );
   
   useEffect( () => {
-    fetchStart();
+    fetchCollectionsStart();
   }, [] );
 
   return (

@@ -4,6 +4,7 @@ import "firebase/auth";
 import moment from "moment";
 import { CartItem } from "utils/redux/cart/cart.reducer";
 import { CollectionsMap } from "utils/redux/shop/shop.reducer";
+import { resolve } from "node:path";
 
 
 const config = {
@@ -55,6 +56,16 @@ export const convertCollectionsSnapshotToMap = ( collections:ConvertCollectionsS
   }, {} );
 };
 
+
+export const getCurrentUser = () => {
+  return new Promise( ( resolve, reject ) => {
+    const unsubscribe = auth.onAuthStateChanged( userAuth => {
+      unsubscribe();
+      resolve( userAuth );
+    }, reject );
+  } );
+};
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
@@ -81,12 +92,12 @@ export const createUserProfileDocument = async ( userAuth: firebase.User | null,
   return userRef;
 };
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters( {
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters( {
   prompt: 'select_account'
 } );
 
-export const signInWithGoogle = () => auth.signInWithPopup( provider );
+export const signInWithGoogle = () => auth.signInWithPopup( googleProvider );
 
 
 

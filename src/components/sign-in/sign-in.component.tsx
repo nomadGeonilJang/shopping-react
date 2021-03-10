@@ -3,7 +3,7 @@ import "./sign-in.styles.scss";
 
 import FormInput from "components/form-input/form-input.component";
 import CustomButton from "components/custom-button/custom-button.component";
-import { auth, signInWithGoogle } from "utils/firebase/firebase.utils";
+import { useEmailAndPasswordSignIn, useGoogleSignIn } from "utils/redux/user/user.hooks";
 
 const initState = {
   email: "",
@@ -11,20 +11,15 @@ const initState = {
 };
 
 const SignIn = () => {
+  const googleSignIn = useGoogleSignIn();
+  const emailSignIn = useEmailAndPasswordSignIn();
 
   const [ { email, password }, setFormState ] = useState( initState );
 
 
   const handleSubmit = async ( event:React.FormEvent ) => {
     event.preventDefault();
-
-    try{
-      await auth.signInWithEmailAndPassword( email, password );
-      setFormState( initState );
-    }catch( error ){
-      console.log( error );
-    }
-    
+    emailSignIn( { email, password } ); 
   };
 
   const handleChange = ( e:React.ChangeEvent<HTMLInputElement> ) => {
@@ -61,7 +56,7 @@ const SignIn = () => {
         />
         <div className="buttons">
           <CustomButton type="submit">Sign in</CustomButton>
-          <CustomButton type="button" onClick={signInWithGoogle} isGoogleSignIn>Sign in with Google</CustomButton>
+          <CustomButton type="button" onClick={googleSignIn} isGoogleSignIn>Sign in with Google</CustomButton>
         </div>
       </form>
     </div>
