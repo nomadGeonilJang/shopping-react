@@ -1,12 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import { User } from "types";
 import { RootState } from "utils/redux/root-reducer";
-import { emailSignInRequest, googleSignInRequest, setCurrentUser } from "utils/redux/user/user.actions";
+import { checkUserSession, emailSignInRequest, googleSignInRequest, setCurrentUser, signOutStart } from "utils/redux/user/user.actions";
 
-
-export const useUser = () => {
-  return useSelector( ( state:RootState ) => state.user );
-};
+export const useUser = () => useSelector( ( state:RootState ) => state.user );
 
 export const useSetUser = () => {
   const dispatch = useDispatch();
@@ -23,3 +20,12 @@ export const useEmailAndPasswordSignIn = () => {
   return ( emailAndPassword:{email:string, password:string} ) => dispatch( emailSignInRequest( emailAndPassword ) );
 };
 
+export const useCheckUserSession = () => {
+  const dispatch = useDispatch();
+  return () => dispatch( checkUserSession() );
+};
+
+export const useSignOut = () => {
+  const dispatch = useDispatch();
+  return () => dispatch( signOutStart() );
+};

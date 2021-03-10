@@ -4,14 +4,16 @@ import { ReactComponent as Logo } from "assets/crown.svg";
 import { auth } from "utils/firebase/firebase.utils";
 import CartIcon from "components/cart-icon/cart-icon.component";
 import CartDropDown from "components/cart-dropdown/cart-dropdown.component";
-import { useUser } from "utils/redux/user/user.hooks";
+import { useSignOut, useUser } from "utils/redux/user/user.hooks";
 import { useCart } from "utils/redux/cart/cart.hooks";
 import { HeaderContainer, LogoContainer, OptionLink, OptionsContainer } from "components/header/header.styles";
 
 const Header = (  ) => {
   const { currentUser } = useUser();
   const { hidden } = useCart();
-  
+  const signOut = useSignOut();
+
+
   return (
     <HeaderContainer >
       <LogoContainer to="/">
@@ -26,7 +28,7 @@ const Header = (  ) => {
         </OptionLink>
         { currentUser ? ( 
           <OptionLink as="a"
-            onClick={() => auth.signOut()}
+            onClick={() => signOut()}
           >SIGN OUT</OptionLink> 
         ) : (
           <OptionLink  to="/signin">

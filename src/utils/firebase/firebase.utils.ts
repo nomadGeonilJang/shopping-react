@@ -4,6 +4,7 @@ import "firebase/auth";
 import moment from "moment";
 import { CartItem } from "utils/redux/cart/cart.reducer";
 import { CollectionsMap } from "utils/redux/shop/shop.reducer";
+import { resolve } from "node:path";
 
 
 const config = {
@@ -53,6 +54,16 @@ export const convertCollectionsSnapshotToMap = ( collections:ConvertCollectionsS
     acc[  collection.title.toLocaleLowerCase()  ] = collection;
     return acc;
   }, {} );
+};
+
+
+export const getCurrentUser = () => {
+  return new Promise( ( resolve, reject ) => {
+    const unsubscribe = auth.onAuthStateChanged( userAuth => {
+      unsubscribe();
+      resolve( userAuth );
+    }, reject );
+  } );
 };
 
 export const auth = firebase.auth();
