@@ -42,7 +42,7 @@ npm install --save firebse
 
 ### redux 추가
 1. 예측 가능한 상태 관리
-    - 단방향! flux
+    - 단방향 flux
     - one big state
     - state is read only
     - changes using pure function
@@ -92,7 +92,7 @@ o -> o -> o -> o ->
     }
 
     ```
-3. take, takeEvery, takeLaste
+3. take, takeEvery, takeLatest
     - take <- it's not gonna start again when it's done 
     - takeEvery <- it's again forevery as new take = regenerator ( take + while(true) ) 
     - takeLatest <- it kills(cancel!! nice!) previous tast and start current task ( setTimeout, only lastest on do!!) 
