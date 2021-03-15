@@ -1,7 +1,5 @@
 import React from "react";
 import { ReactComponent as Logo } from "assets/crown.svg";
-
-import { auth } from "utils/firebase/firebase.utils";
 import CartIcon from "components/cart-icon/cart-icon.component";
 import CartDropDown from "components/cart-dropdown/cart-dropdown.component";
 import { useSignOut, useUser } from "utils/redux/user/user.hooks";
