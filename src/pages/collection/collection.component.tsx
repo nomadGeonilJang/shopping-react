@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./collection.styles.scss";
 
 import CollectionItem from "components/collection-item/collection-item.component";
 import { Redirect, useRouteMatch } from "react-router-dom";
 import {  CollectionID, useSelectCollectionWithCollectionId } from "utils/redux/shop/shop.hooks";
+import { firestore } from "utils/firebase/firebase.utils";
 
 const CollectionPage = () => {
   const { params } = useRouteMatch<{collectionId:CollectionID}>();
@@ -14,6 +15,15 @@ const CollectionPage = () => {
   }
 
   const { title, items } = collection;
+
+  useEffect( () => {
+    const unSubscribFromCollections = firestore
+      .collection( 'collections' )
+      .onSnapshot( snap => console.log( snap ) );
+    return () => {
+      unSubscribFromCollections();
+    };
+  }, [] );
 
   return (
     <div className="collection-page">

@@ -12,7 +12,10 @@ type CollectionItem = {
 
 const CollectionItem = ( { item } :CollectionItem ) => {
   const { name, price, imageUrl } = item ;
+
   const addItem = useAddItem();
+
+
 
   return (
     <>

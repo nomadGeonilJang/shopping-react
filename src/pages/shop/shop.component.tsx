@@ -5,8 +5,6 @@ import CollectionPage from "pages/collection/collection.component";
 import WithSpinner from "components/with-spinner/with-spinner.component";
 import { useFetchCollectionStart, useisFetching } from "utils/redux/shop/shop.hooks";
 
-
-
 const CollectionsOverviewWithSpinner = WithSpinner( CollectionsOverview );
 const CollectionsPageWithSpinner = WithSpinner( CollectionPage );
 
