@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./collection-item.styles.scss";
 
 
 import CustomButton from "components/custom-button/custom-button.component";
-import { useAddItem } from "utils/redux/cart/cart.hooks";
 import { CartItem } from "utils/redux/cart/cart.reducer";
+import { CartContext } from "providers/cart/cart.provider";
 
 type CollectionItem = {
   item: CartItem
@@ -13,7 +13,8 @@ type CollectionItem = {
 const CollectionItem = ( { item } :CollectionItem ) => {
   const { name, price, imageUrl } = item ;
 
-  const addItem = useAddItem();
+  
+  const { addItem } = useContext( CartContext );
 
   return (
     <>

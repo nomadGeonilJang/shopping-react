@@ -4,17 +4,13 @@ import "./cart-dropdown.styles.scss";
 
 import CustomButton from "components/custom-button/custom-button.component";
 import CartItem from "components/cart-item/cart-item.component";
-import { useCart } from "utils/redux/cart/cart.hooks";
-import CartContext from "contexts/cart/cart.context";
+import { CartContext } from "providers/cart/cart.provider";
 
 const CartDropDown = () => {
   const history = useHistory();
-  const { toggleHidden } = useContext( CartContext );
-  const { cartItems } = useCart();
-
+  const { toggleHidden, cartItems } = useContext( CartContext );
   
   const handleGoToCheckout = () => {
-    
     toggleHidden();
     history.push( "/checkout" );
   };

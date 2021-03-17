@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./checkout.styles.scss";
 
 import CheckoutItem from "components/checkout-item/checkout-item.component";
 import StripeCheckoutButton from "components/stripe-button/stripe-button.component";
-import { useCart, useTotalPrice } from "utils/redux/cart/cart.hooks";
+import {  useTotalPrice } from "utils/redux/cart/cart.hooks";
+import { CartContext } from "providers/cart/cart.provider";
 
 const Checkout = () => {
-  const { cartItems } = useCart();
+  const { cartItems } = useContext( CartContext );
   const totalPrice = useTotalPrice();
 
   return (

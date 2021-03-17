@@ -1,8 +1,5 @@
-import styled, { css }from "styled-components";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
-
-
-
 
 export const HeaderContainer = styled.header`
   height: 70px;

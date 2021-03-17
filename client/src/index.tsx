@@ -9,16 +9,20 @@ import App from "App";
 import GlobalStyles from 'utils/styles/globalStyles';
 import { store, persistor } from 'utils/redux/store';
 
+import CartProvider from "providers/cart/cart.provider";
+
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <GlobalStyles/>
-      <BrowserRouter>
-        <PersistGate persistor={persistor}>
-          <App />
-        </PersistGate>
-      </BrowserRouter>
+      <CartProvider>
+        <GlobalStyles/>
+        <BrowserRouter>
+          <PersistGate persistor={persistor}>
+            <App />
+          </PersistGate>
+        </BrowserRouter>
+      </CartProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById( 'root' )
