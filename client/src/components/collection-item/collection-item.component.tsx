@@ -15,8 +15,6 @@ const CollectionItem = ( { item } :CollectionItem ) => {
 
   const addItem = useAddItem();
 
-
-
   return (
     <>
       <div className="collection-item" >

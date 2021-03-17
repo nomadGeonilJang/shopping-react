@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
+import { Redirect, useRouteMatch } from "react-router-dom";
 import "./collection.styles.scss";
 
 import CollectionItem from "components/collection-item/collection-item.component";
-import { Redirect, useRouteMatch } from "react-router-dom";
 import {  CollectionID, useSelectCollectionWithCollectionId } from "utils/redux/shop/shop.hooks";
 import { firestore } from "utils/firebase/firebase.utils";
 
