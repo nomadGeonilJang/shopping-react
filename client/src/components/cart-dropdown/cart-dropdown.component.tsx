@@ -1,18 +1,21 @@
-import React, { memo } from "react";
+import React, { memo, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import "./cart-dropdown.styles.scss";
 
 import CustomButton from "components/custom-button/custom-button.component";
 import CartItem from "components/cart-item/cart-item.component";
-import { useCart, useToggleCart } from "utils/redux/cart/cart.hooks";
+import { useCart } from "utils/redux/cart/cart.hooks";
+import CartContext from "contexts/cart/cart.context";
 
 const CartDropDown = () => {
   const history = useHistory();
+  const { toggleHidden } = useContext( CartContext );
   const { cartItems } = useCart();
-  const toggle = useToggleCart();
+
   
   const handleGoToCheckout = () => {
-    toggle();
+    
+    toggleHidden();
     history.push( "/checkout" );
   };
   
