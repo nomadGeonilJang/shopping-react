@@ -38,9 +38,7 @@ app.post('/payment', (req, res) => {
       res.status(200).send({ success: stripeRes });
     }
   });
-
 });
-
 
 app.listen(port, error => {
   if (error) throw error;
