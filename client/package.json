@@ -2,6 +2,7 @@
   "name": "shopping-react",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -12,6 +13,7 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.7",
+    "axios": "^0.21.1",
     "firebase": "^8.2.9",
     "moment": "^2.29.1",
     "node-sass": "^5.0.0",
