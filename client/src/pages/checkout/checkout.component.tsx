@@ -1,8 +1,9 @@
+import React from "react";
+import "./checkout.styles.scss";
+
 import CheckoutItem from "components/checkout-item/checkout-item.component";
 import StripeCheckoutButton from "components/stripe-button/stripe-button.component";
-import React from "react";
 import { useCart, useTotalPrice } from "utils/redux/cart/cart.hooks";
-import "./checkout.styles.scss";
 
 const Checkout = () => {
   const { cartItems } = useCart();
