@@ -1,5 +1,4 @@
-import ErrorBoundary from 'components/error-boundary/error-boundary';
-import React, { useEffect, lazy } from 'react';
+import React, { useEffect, lazy, Profiler } from 'react';
 import {  Redirect, Route, Switch } from "react-router-dom";
 
 import { useCheckUserSession, useUser } from 'utils/redux/user/user.hooks';
@@ -21,7 +20,11 @@ function App() {
   }, [] );
   return (
     <>
-      <Header/>
+      <Profiler id="header-profiler" onRender={( id, phase, actualDuration ) => {
+        console.log( id, phase, actualDuration );
+      }}>
+        <Header/>
+      </Profiler>
       <Switch>
         <Route exact path="/" ><HomePage/></Route>  
         <Route path="/shop"><ShopPage/></Route>
