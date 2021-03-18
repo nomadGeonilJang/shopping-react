@@ -1,3 +1,4 @@
+import ErrorBoundary from 'components/error-boundary/error-boundary';
 import React, { useEffect, lazy } from 'react';
 import {  Redirect, Route, Switch } from "react-router-dom";
 
@@ -18,7 +19,6 @@ function App() {
   useEffect( () => {
     checkUserSession();
   }, [] );
-
   return (
     <>
       <Header/>

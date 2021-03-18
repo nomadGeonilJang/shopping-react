@@ -13,6 +13,7 @@ import { store, persistor } from 'utils/redux/store';
 
 import CartProvider from "providers/cart/cart.provider";
 import { GET_CART_HIDDEN } from 'graphql/resolvers';
+import ErrorBoundary from 'components/error-boundary/error-boundary';
 
 
 const client = new ApolloClient( {
@@ -43,9 +44,11 @@ ReactDOM.render(
           <BrowserRouter>
             <PersistGate persistor={persistor}>
               <GlobalStyles/>
-              <Suspense fallback={<h1>...loading</h1>}>
-                <App />
-              </Suspense>
+              <ErrorBoundary>
+                <Suspense fallback={<h1>...loading</h1>}>
+                  <App />
+                </Suspense>
+              </ErrorBoundary>
             </PersistGate>
           </BrowserRouter>
         </CartProvider>
