@@ -1,4 +1,4 @@
-import React, { useEffect, lazy, Suspense } from 'react';
+import React, { useEffect, lazy } from 'react';
 import {  Redirect, Route, Switch } from "react-router-dom";
 
 import { useCheckUserSession, useUser } from 'utils/redux/user/user.hooks';
@@ -23,7 +23,7 @@ function App() {
     <>
       <Header/>
       <Switch>
-        <Route exact path="/" ><HomePage/></Route>
+        <Route exact path="/" ><HomePage/></Route>  
         <Route path="/shop"><ShopPage/></Route>
         <Route exact path="/checkout"><CheckoutPage/></Route>
         <Route exact path="/signin" render={() => {
