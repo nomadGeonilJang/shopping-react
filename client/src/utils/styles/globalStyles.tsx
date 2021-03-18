@@ -10,6 +10,10 @@ const GlobalStyles = createGlobalStyle`
         padding: 20px 60px;
         font-size:12px;
         font-family: 'Noto Sans KR', sans-serif;
+        
+        @media screen and (max-width: 800px){
+            padding:10px;
+        }
     }
     
     a{
@@ -24,6 +28,9 @@ const GlobalStyles = createGlobalStyle`
         font-size:32px;
         font-weight:bold;
     }
+
+
+
   
 `;
 
