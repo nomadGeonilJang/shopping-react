@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -40,11 +40,12 @@ ReactDOM.render(
     <ApolloProvider client={client}>
       <Provider store={store}>
         <CartProvider>
-          
           <BrowserRouter>
             <PersistGate persistor={persistor}>
               <GlobalStyles/>
-              <App />
+              <Suspense fallback={<h1>...loading</h1>}>
+                <App />
+              </Suspense>
             </PersistGate>
           </BrowserRouter>
         </CartProvider>

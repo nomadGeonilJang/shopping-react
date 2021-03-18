@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import {  Redirect, Route, Switch } from "react-router-dom";
 
-import HomePage from "pages/homepage/homepage.component";
-import ShopPage from "pages/shop/shop.component";
-import SignInAndSignUpPage from "pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
-import CheckoutPage from "pages/checkout/checkout.component";
-import Header from 'components/header/header.component';
 import { useCheckUserSession, useUser } from 'utils/redux/user/user.hooks';
+
+const  HomePage = lazy( () => import( "pages/homepage/homepage.component" ) );
+const  ShopPage = lazy( () => import( "pages/shop/shop.component" ) );
+const  SignInAndSignUpPage = lazy( () => import( "pages/sign-in-and-sign-up/sign-in-and-sign-up.component" ) );
+const  CheckoutPage = lazy( () => import( "pages/checkout/checkout.component" ) );
+const  Header = lazy( () => import( 'components/header/header.component' ) );
 
 
 function App() {
